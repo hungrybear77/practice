@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>저녁 메뉴 추천 - 오늘 뭐 먹지?</title>
+    <title>동물상 테스트 - 강아지 vs 고양이</title>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,101 +19,70 @@
     <main class="shell">
         <header class="topbar">
             <div class="brand">
-                <span class="brand-mark">Dinner Lab</span>
-                <span class="brand-sub">저녁 메뉴 추천</span>
+                <span class="brand-mark">Animal Face Lab</span>
+                <span class="brand-sub">강아지 · 고양이 동물상 테스트</span>
             </div>
-            <div class="status-pill">오늘 뭐 먹지? 10초 해결</div>
+            <div class="status-pill">AI로 5초 판별</div>
         </header>
 
         <section class="hero">
             <div class="hero-copy">
-                <p class="eyebrow">저녁 고민 끝</p>
-                <h1>오늘의 저녁, 감각적으로 골라드립니다.</h1>
+                <p class="eyebrow">Animal Vibe</p>
+                <h1>나는 강아지상일까, 고양이상일까?</h1>
                 <p class="subtitle">
-                    기분, 예산, 조리 시간만 알려주세요. 당신의 밤에 어울리는 메뉴를 추천해요.
+                    Teachable Machine으로 학습한 모델로 얼굴 분위기를 판별해요. 사진을 올리거나 웹캠으로 바로 테스트해보세요.
                 </p>
                 <div class="hero-stats">
                     <div>
-                        <span class="stat-number" id="menu-count">28</span>
-                        <span class="stat-label">가지 메뉴</span>
+                        <span class="stat-number" id="label-count">2</span>
+                        <span class="stat-label">라벨 수</span>
                     </div>
                     <div>
-                        <span class="stat-number">3</span>
-                        <span class="stat-label">추천 카드</span>
+                        <span class="stat-number">1</span>
+                        <span class="stat-label">모델</span>
                     </div>
                     <div>
-                        <span class="stat-number">5</span>
-                        <span class="stat-label">맞춤 필터</span>
+                        <span class="stat-number">2</span>
+                        <span class="stat-label">입력 방식</span>
                     </div>
                 </div>
             </div>
             <div class="hero-panel">
                 <div class="panel-header">
-                    <h2>추천 세팅</h2>
+                    <h2>테스트 설정</h2>
                     <button class="ghost" id="reset-btn" type="button">초기화</button>
                 </div>
                 <div class="control-grid">
-                    <label class="control">
-                        <span>예산</span>
-                        <select id="budget-filter">
-                            <option value="any">상관없음</option>
-                            <option value="low">저렴</option>
-                            <option value="mid">보통</option>
-                            <option value="high">여유롭게</option>
-                        </select>
+                    <label class="control control--full">
+                        <span>이미지 업로드</span>
+                        <input id="image-input" type="file" accept="image/*">
                     </label>
-                    <label class="control">
-                        <span>조리 시간</span>
-                        <select id="time-filter">
-                            <option value="any">상관없음</option>
-                            <option value="quick">30분 이하</option>
-                            <option value="mid">30~60분</option>
-                            <option value="long">1시간 이상</option>
-                        </select>
-                    </label>
-                    <label class="control">
-                        <span>매운맛</span>
-                        <select id="spice-filter">
-                            <option value="any">상관없음</option>
-                            <option value="mild">순한맛</option>
-                            <option value="medium">적당히 매움</option>
-                            <option value="hot">화끈하게</option>
-                        </select>
-                    </label>
-                    <label class="control">
-                        <span>식단</span>
-                        <select id="diet-filter">
-                            <option value="any">상관없음</option>
-                            <option value="vegetarian">채식</option>
-                            <option value="protein">단백질 든든</option>
-                            <option value="light">가볍게</option>
-                        </select>
-                    </label>
-                    <label class="control">
-                        <span>분위기</span>
-                        <div class="chip-row" id="mood-filter">
-                            <button type="button" class="chip" data-value="any">무드 없음</button>
-                            <button type="button" class="chip" data-value="comfort">편안함</button>
-                            <button type="button" class="chip" data-value="fresh">상큼함</button>
-                            <button type="button" class="chip" data-value="hearty">든든함</button>
-                            <button type="button" class="chip" data-value="celebrate">기분 업</button>
+                    <div class="preview" id="preview">
+                        <span>미리보기 영역</span>
+                    </div>
+                    <label class="control control--full">
+                        <span>웹캠</span>
+                        <div class="button-row">
+                            <button class="ghost" id="webcam-start" type="button">웹캠 시작</button>
+                            <button class="ghost" id="webcam-stop" type="button">웹캠 종료</button>
                         </div>
                     </label>
+                    <div class="webcam-wrap" id="webcam-container"></div>
                 </div>
-                <button id="generate-btn" class="cta" type="button">오늘 저녁 추천받기</button>
-                <p class="hint">원하는 옵션만 골라주세요. 나머지는 제가 알아서!</p>
+                <button id="analyze-btn" class="cta" type="button">동물상 분석하기</button>
+                <p class="hint" id="model-status">모델 로딩 중...</p>
             </div>
         </section>
 
         <section class="results">
             <div class="results-header">
                 <div>
-                    <p class="eyebrow">추천 결과</p>
-                    <h2>오늘 저녁에 어울리는 메뉴</h2>
+                    <p class="eyebrow">Test Result</p>
+                    <h2>동물상 판별 결과</h2>
                 </div>
-                <div class="results-note" id="result-note">추천을 눌러 메뉴를 받아보세요.</div>
+                <div class="results-note" id="result-note">이미지를 올리거나 웹캠을 시작해 주세요.</div>
             </div>
-            <div id="recommendations" class="card-grid"></div>
+            <div id="predictions" class="card-grid"></div>
         </section>
 
         <section class="contact">
@@ -177,6 +146,8 @@
         (d.head || d.body).appendChild(s);
         })();
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.16.0/dist/tf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@0.8/dist/teachablemachine-image.min.js"></script>
     <script src="main.js"></script>
 </body>
 </html>

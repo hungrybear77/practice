@@ -253,6 +253,12 @@ body.loaded .results {
     color: var(--ink);
 }
 
+.button-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
 select {
     appearance: none;
     border-radius: var(--radius-sm);
@@ -278,6 +284,35 @@ textarea {
 textarea {
     resize: vertical;
     min-height: 120px;
+}
+
+.preview,
+.webcam-wrap {
+    border-radius: var(--radius-md);
+    border: 1px dashed rgba(30, 26, 22, 0.2);
+    background: rgba(255, 255, 255, 0.6);
+    min-height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--muted);
+    font-size: 13px;
+    text-align: center;
+    padding: 12px;
+}
+
+.preview img {
+    width: 100%;
+    height: 100%;
+    max-height: 240px;
+    object-fit: cover;
+    border-radius: var(--radius-md);
+}
+
+.webcam-wrap canvas {
+    width: 100%;
+    max-width: 320px;
+    border-radius: var(--radius-md);
 }
 
 .chip-row {
@@ -493,6 +528,27 @@ textarea {
     justify-content: space-between;
     font-size: 12px;
     color: var(--muted);
+}
+
+.confidence-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    color: var(--muted);
+}
+
+.confidence-bar {
+    height: 8px;
+    border-radius: 999px;
+    background: rgba(231, 111, 81, 0.12);
+    overflow: hidden;
+}
+
+.confidence-bar span {
+    display: block;
+    height: 100%;
+    background: linear-gradient(135deg, #e76f51, #f4a261);
+    border-radius: 999px;
 }
 
 @keyframes fadeUp {
