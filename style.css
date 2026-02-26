@@ -264,6 +264,22 @@ select {
     font-family: inherit;
 }
 
+input,
+textarea {
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--line);
+    padding: 10px 12px;
+    font-size: 14px;
+    background: var(--panel-strong);
+    color: var(--ink);
+    font-family: inherit;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
 .chip-row {
     display: flex;
     flex-wrap: wrap;
@@ -345,6 +361,57 @@ select {
     grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
     gap: 18px;
 }
+
+.contact {
+    background: rgba(255, 255, 255, 0.65);
+    border-radius: var(--radius-lg);
+    border: 1px solid rgba(30, 26, 22, 0.1);
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    box-shadow: var(--shadow);
+    backdrop-filter: blur(8px);
+}
+
+.contact-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 20px;
+}
+
+.contact-header h2 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.contact-subtitle {
+    margin: 0;
+    color: var(--muted);
+    font-size: 14px;
+    max-width: 320px;
+}
+
+.contact-form {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+}
+
+.control--full {
+    grid-column: 1 / -1;
+}
+
+.form-footer {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
 
 .card {
     background: var(--panel-strong);
@@ -434,6 +501,11 @@ select {
         flex-direction: column;
         align-items: flex-start;
     }
+
+    .contact-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
 }
 
 @media (max-width: 680px) {
@@ -447,5 +519,13 @@ select {
 
     .results-note {
         width: 100%;
+    }
+
+    .contact {
+        padding: 24px;
+    }
+
+    .contact-subtitle {
+        max-width: none;
     }
 }

@@ -115,6 +115,38 @@
             </div>
             <div id="recommendations" class="card-grid"></div>
         </section>
+
+        <section class="contact">
+            <div class="contact-header">
+                <div>
+                    <p class="eyebrow">Partnership</p>
+                    <h2>제휴 문의</h2>
+                </div>
+                <p class="contact-subtitle">협업 아이디어를 보내주시면 빠르게 답장드릴게요.</p>
+            </div>
+            <form class="contact-form" action="https://formspree.io/f/xlgwajng" method="POST">
+                <label class="control">
+                    <span>이름</span>
+                    <input type="text" name="name" placeholder="담당자 성함" required>
+                </label>
+                <label class="control">
+                    <span>이메일</span>
+                    <input type="email" name="email" placeholder="you@company.com" required>
+                </label>
+                <label class="control">
+                    <span>회사 / 브랜드</span>
+                    <input type="text" name="company" placeholder="회사명 또는 브랜드명">
+                </label>
+                <label class="control control--full">
+                    <span>문의 내용</span>
+                    <textarea name="message" rows="5" placeholder="어떤 협업을 원하시나요?" required></textarea>
+                </label>
+                <div class="form-footer">
+                    <button class="cta" type="submit">제휴 문의 보내기</button>
+                    <p class="hint">제출 시 개인정보 처리에 동의한 것으로 간주합니다.</p>
+                </div>
+            </form>
+        </section>
     </main>
     <script src="main.js"></script>
 </body>
