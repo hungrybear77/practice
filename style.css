@@ -374,6 +374,37 @@ textarea {
     backdrop-filter: blur(8px);
 }
 
+.comments {
+    background: rgba(255, 255, 255, 0.65);
+    border-radius: var(--radius-lg);
+    border: 1px solid rgba(30, 26, 22, 0.1);
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    box-shadow: var(--shadow);
+    backdrop-filter: blur(8px);
+}
+
+.comments-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 20px;
+}
+
+.comments-header h2 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.comments-subtitle {
+    margin: 0;
+    color: var(--muted);
+    font-size: 14px;
+    max-width: 320px;
+}
+
 .contact-header {
     display: flex;
     justify-content: space-between;
@@ -506,6 +537,11 @@ textarea {
         flex-direction: column;
         align-items: flex-start;
     }
+
+    .comments-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
 }
 
 @media (max-width: 680px) {
@@ -526,6 +562,14 @@ textarea {
     }
 
     .contact-subtitle {
+        max-width: none;
+    }
+
+    .comments {
+        padding: 24px;
+    }
+
+    .comments-subtitle {
         max-width: none;
     }
 }
