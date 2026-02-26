@@ -4,8 +4,6 @@ const METADATA_URL = `${MODEL_BASE}metadata.json`;
 
 let model = null;
 let maxPredictions = 0;
-let webcam = null;
-let webcamLoopId = null;
 let activeImage = null;
 
 const statusEl = document.getElementById('model-status');
@@ -16,9 +14,6 @@ const imageInput = document.getElementById('image-input');
 const previewEl = document.getElementById('preview');
 const analyzeBtn = document.getElementById('analyze-btn');
 const resetBtn = document.getElementById('reset-btn');
-const webcamStartBtn = document.getElementById('webcam-start');
-const webcamStopBtn = document.getElementById('webcam-stop');
-const webcamContainer = document.getElementById('webcam-container');
 
 const setStatus = (message, isError = false) => {
     statusEl.textContent = message;
@@ -80,52 +75,10 @@ const loadModel = async () => {
     }
 };
 
-const stopWebcam = () => {
-    if (webcam) {
-        webcam.stop();
-        webcam = null;
-    }
-    if (webcamLoopId) {
-        cancelAnimationFrame(webcamLoopId);
-        webcamLoopId = null;
-    }
-    if (webcamContainer) {
-        webcamContainer.innerHTML = '웹캠이 꺼져 있습니다.';
-    }
-};
-
-const webcamLoop = () => {
-    if (!webcam) return;
-    webcam.update();
-    webcamLoopId = requestAnimationFrame(webcamLoop);
-};
-
-const startWebcam = async () => {
-    await loadModel();
-    stopWebcam();
-
-    try {
-        webcam = new tmImage.Webcam(320, 320, true);
-        await webcam.setup();
-        await webcam.play();
-
-        webcamContainer.innerHTML = '';
-        webcamContainer.appendChild(webcam.canvas);
-        activeImage = webcam.canvas;
-        resultNote.textContent = '웹캠이 켜졌어요. 분석 버튼을 눌러주세요.';
-
-        webcamLoop();
-    } catch (error) {
-        console.error(error);
-        resultNote.textContent = '웹캠 권한을 확인해 주세요.';
-    }
-};
-
 imageInput.addEventListener('change', (event) => {
     const file = event.target.files[0];
     if (!file) return;
 
-    stopWebcam();
     const img = new Image();
     const objectUrl = URL.createObjectURL(file);
     img.onload = () => {
@@ -140,7 +93,7 @@ imageInput.addEventListener('change', (event) => {
 
 analyzeBtn.addEventListener('click', async () => {
     if (!activeImage) {
-        resultNote.textContent = '이미지를 올리거나 웹캠을 시작해 주세요.';
+        resultNote.textContent = '이미지를 올려주세요.';
         return;
     }
 
@@ -153,15 +106,16 @@ analyzeBtn.addEventListener('click', async () => {
 
 resetBtn.addEventListener('click', () => {
     imageInput.value = '';
-    previewEl.innerHTML = '<span>미리보기 영역</span>';
+    previewEl.innerHTML = `
+        <div class="preview-copy">
+            <p class="preview-title">사진을 올려주세요</p>
+            <p class="preview-desc">얼굴이 잘 보이는 정면 사진이면 정확도가 올라가요.</p>
+        </div>
+    `;
     activeImage = null;
     clearPredictions();
-    resultNote.textContent = '이미지를 올리거나 웹캠을 시작해 주세요.';
-    stopWebcam();
+    resultNote.textContent = '이미지를 올려주세요.';
 });
-
-webcamStartBtn.addEventListener('click', startWebcam);
-webcamStopBtn.addEventListener('click', stopWebcam);
 
 document.addEventListener('DOMContentLoaded', () => {
     setStatus('모델 로딩 중...');

@@ -253,12 +253,6 @@ body.loaded .results {
     color: var(--ink);
 }
 
-.button-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-}
-
 select {
     appearance: none;
     border-radius: var(--radius-sm);
@@ -286,8 +280,7 @@ textarea {
     min-height: 120px;
 }
 
-.preview,
-.webcam-wrap {
+.preview {
     border-radius: var(--radius-md);
     border: 1px dashed rgba(30, 26, 22, 0.2);
     background: rgba(255, 255, 255, 0.6);
@@ -301,17 +294,29 @@ textarea {
     padding: 12px;
 }
 
+.preview-copy {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.preview-title {
+    margin: 0;
+    font-weight: 600;
+    color: var(--ink);
+}
+
+.preview-desc {
+    margin: 0;
+    color: var(--muted);
+    font-size: 13px;
+}
+
 .preview img {
     width: 100%;
     height: 100%;
     max-height: 240px;
     object-fit: cover;
-    border-radius: var(--radius-md);
-}
-
-.webcam-wrap canvas {
-    width: 100%;
-    max-width: 320px;
     border-radius: var(--radius-md);
 }
 
