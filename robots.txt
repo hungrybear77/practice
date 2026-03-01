@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://693a126a.practice-29o.pages.dev/sitemap.xml

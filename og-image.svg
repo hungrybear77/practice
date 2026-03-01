@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="Animal Face Lab">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f4a261"/>
+      <stop offset="1" stop-color="#e76f51"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.2" cy="0.2" r="0.8">
+      <stop offset="0" stop-color="#fff1e7" stop-opacity="0.9"/>
+      <stop offset="1" stop-color="#fff1e7" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+  <g transform="translate(160 90)">
+    <circle cx="200" cy="225" r="170" fill="#fff1e7" stroke="#1e1a16" stroke-width="10"/>
+    <polygon points="90,150 130,20 190,160" fill="#fff1e7" stroke="#1e1a16" stroke-width="10" stroke-linejoin="round"/>
+    <path d="M220 150 Q280 10 360 90 Q350 200 250 180 Z" fill="#fff1e7" stroke="#1e1a16" stroke-width="10" stroke-linejoin="round"/>
+    <circle cx="150" cy="220" r="12" fill="#1e1a16"/>
+    <circle cx="250" cy="220" r="12" fill="#1e1a16"/>
+    <circle cx="200" cy="255" r="12" fill="#e76f51"/>
+    <path d="M170 285 Q200 310 230 285" fill="none" stroke="#1e1a16" stroke-width="10" stroke-linecap="round"/>
+  </g>
+  <g font-family="'Fraunces','Times New Roman',serif" fill="#1e1a16">
+    <text x="520" y="250" font-size="64" font-weight="700">Animal Face Lab</text>
+    <text x="520" y="320" font-size="32" font-weight="600">강아지 · 고양이 동물상 테스트</text>
+  </g>
+</svg>
